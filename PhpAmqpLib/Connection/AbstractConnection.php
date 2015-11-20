@@ -489,7 +489,7 @@ class AbstractConnection extends AbstractChannel
      * @throws \PhpAmqpLib\Exception\AMQPTimeoutException
      * @throws \PhpAmqpLib\Exception\AMQPRuntimeException
      */
-    protected function wait_frame($timeout = 0)
+    protected function wait_frame($timeout = AbstractConnection::DEFAULT_TIMEOUT)
     {
         if (is_null($this->input))
         {
@@ -540,7 +540,7 @@ class AbstractConnection extends AbstractChannel
      * @param int $timeout
      * @return array
      */
-    protected function wait_channel($channel_id, $timeout = 0)
+    protected function wait_channel($channel_id, $timeout = AbstractConnection::DEFAULT_TIMEOUT)
     {
         // Keeping the original timeout unchanged.
         $_timeout = $timeout;

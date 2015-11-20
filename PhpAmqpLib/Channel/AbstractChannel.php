@@ -20,6 +20,7 @@ abstract class AbstractChannel
 {
     const PROTOCOL_080 = '0.8';
     const PROTOCOL_091 = '0.9.1';
+	const DEFAULT_TIMEOUT = 3;
 
     public static $PROTOCOL_CONSTANTS_CLASS;
 
@@ -208,7 +209,7 @@ abstract class AbstractChannel
      * @param int $timeout
      * @return array|mixed
      */
-    public function next_frame($timeout = 0)
+    public function next_frame($timeout = AbstractChannel::DEFAULT_TIMEOUT)
     {
         $this->debug->debug_msg('waiting for a new frame');
 
@@ -324,7 +325,7 @@ abstract class AbstractChannel
      * @throws \PhpAmqpLib\Exception\AMQPRuntimeException
      * @return mixed
      */
-    public function wait($allowed_methods = null, $non_blocking = false, $timeout = 0)
+    public function wait($allowed_methods = null, $non_blocking = false, $timeout = AbstractChannel::DEFAULT_TIMEOUT)
     {
         $this->debug->debug_allowed_methods($allowed_methods);
 

@@ -24,6 +24,7 @@ class AMQPReader extends AbstractClient
     const READ_PHP_INT = 4; // use READ_ to avoid possible clashes with PHP
     const LONGLONG = 8;
     const TIMESTAMP = 8;
+	const DEFAULT_TIMEOUT = 3;
 
     /** @var string */
     protected $str;
@@ -54,7 +55,7 @@ class AMQPReader extends AbstractClient
      * @param AbstractIO $io
      * @param int $timeout
      */
-    public function __construct($str, AbstractIO $io = null, $timeout = 0)
+    public function __construct($str, AbstractIO $io = null, $timeout = AMQPReader::DEFAULT_TIMEOUT)
     {
         parent::__construct();
 

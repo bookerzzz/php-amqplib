@@ -1338,7 +1338,7 @@ class AMQPChannel extends AbstractChannel
      *
      * @param int $timeout Waits until $timeout value is reached
      */
-    public function wait_for_pending_acks($timeout = 0)
+    public function wait_for_pending_acks($timeout = AbstractChannel::DEFAULT_TIMEOUT)
     {
         $functions = array(
             $this->waitHelper->get_wait('basic.ack'),
@@ -1359,7 +1359,7 @@ class AMQPChannel extends AbstractChannel
      *
      * @param int $timeout If set to value > 0 the method will wait at most $timeout seconds for pending acks.
      */
-    public function wait_for_pending_acks_returns($timeout = 0)
+    public function wait_for_pending_acks_returns($timeout = AbstractChannel::DEFAULT_TIMEOUT)
     {
         $functions = array(
             $this->waitHelper->get_wait('basic.ack'),
